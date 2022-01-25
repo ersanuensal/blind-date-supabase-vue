@@ -1,0 +1,17 @@
+{
+  "name": "supabase-vue-3",
+  "version": "0.0.0",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^1.29.4",
+    "vue": "^3.2.29"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.0.0",
+    "vite": "^2.7.2"
+  }
+}
