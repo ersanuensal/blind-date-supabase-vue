@@ -3,7 +3,7 @@
     "short_name": "Blind Date",
     "icons": [
         {
-            "src": "/pwa-192x192.png",
+            "src": "/blind-date-supabase-vue/pwa-192x192.png",
             "sizes": "192x192",
             "type": "image/png"
         }
