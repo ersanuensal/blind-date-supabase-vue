@@ -44,4 +44,12 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('service-worker.js');
   });
 }
+
+
+function isSuccessful(response) {
+  return response &&
+    response.status === 200 &&
+    response.type === 'basic';
+}
+
 </script>
