@@ -1,6 +1,6 @@
 <template>
   <div>
-      <div class="center">
+      <div class="">
         <img
           v-if="src"
           :src="src"

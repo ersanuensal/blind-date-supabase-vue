@@ -198,6 +198,11 @@
     "@vue/compiler-dom" "3.2.29"
     "@vue/shared" "3.2.29"
 
+"@vue/devtools-api@^6.0.0-beta.18":
+  "integrity" "sha512-FqC4s3pm35qGVeXRGOjTsRzlkJjrBLriDS9YXbflHLsfA9FrcKzIyWnLXoNm+/7930E8rRakXuAc2QkC50swAw=="
+  "resolved" "https://registry.npmjs.org/@vue/devtools-api/-/devtools-api-6.0.0-beta.21.1.tgz"
+  "version" "6.0.0-beta.21.1"
+
 "@vue/reactivity-transform@3.2.29":
   "integrity" "sha512-YF6HdOuhdOw6KyRm59+3rML8USb9o8mYM1q+SH0G41K3/q/G7uhPnHGKvspzceD7h9J3VR1waOQ93CUZj7J7OA=="
   "resolved" "https://registry.npmjs.org/@vue/reactivity-transform/-/reactivity-transform-3.2.29.tgz"
@@ -1361,12 +1366,14 @@
   "resolved" "https://registry.npmjs.org/vue-cli-plugin-tailwind/-/vue-cli-plugin-tailwind-2.2.18.tgz"
   "version" "2.2.18"
 
-"vue-router@^3.5.3":
-  "integrity" "sha512-FUlILrW3DGitS2h+Xaw8aRNvGTwtuaxrRkNSHWTizOfLUie7wuYwezeZ50iflRn8YPV5kxmU2LQuu3nM/b3Zsg=="
-  "resolved" "https://registry.npmjs.org/vue-router/-/vue-router-3.5.3.tgz"
-  "version" "3.5.3"
+"vue-router@^4.0.12":
+  "integrity" "sha512-CPXvfqe+mZLB1kBWssssTiWg4EQERyqJZes7USiqfW9B5N2x+nHlnsM1D3b5CaJ6qgCvMmYJnz+G0iWjNCvXrg=="
+  "resolved" "https://registry.npmjs.org/vue-router/-/vue-router-4.0.12.tgz"
+  "version" "4.0.12"
+  dependencies:
+    "@vue/devtools-api" "^6.0.0-beta.18"
 
-"vue@^3.2.25", "vue@^3.2.29", "vue@3.2.29":
+"vue@^3.0.0", "vue@^3.2.25", "vue@^3.2.29", "vue@3.2.29":
   "integrity" "sha512-cFIwr7LkbtCRanjNvh6r7wp2yUxfxeM2yPpDQpAfaaLIGZSrUmLbNiSze9nhBJt5MrZ68Iqt0O5scwAMEVxF+Q=="
   "resolved" "https://registry.npmjs.org/vue/-/vue-3.2.29.tgz"
   "version" "3.2.29"

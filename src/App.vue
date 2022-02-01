@@ -1,24 +1,42 @@
 <template>
-  <div class="container" style="padding: 50px 0 100px 0">
+  <div v-if="appReady" class="min-h-full font-Poppins box-border">
     <Navigation />
+    <router-view />
+  </div>
+  <!-- <div class="container" style="padding: 50px 0 100px 0">
     <Profile v-if="store.user" />
     <Auth v-else />
-  </div>
+  </div> -->
 </template>
 
 <script>
 import Navigation from "./components/Navigation.vue"
-import { store } from "./store"
-import { supabase } from "./supabase"
-import Auth from "./components/Auth.vue"
-import Profile from "./components/Profile.vue"
 import './assets/tailwind.css'
+import { ref } from "vue";
+import { supabase } from "./supabase/init";
+import store from "./store/index";
 
 export default {
   components: {
-    Navigation,
-    Auth,
-    Profile,
+    Navigation
+  },
+  setup() {
+    // Create data / vars
+    const appReady = ref(null);
+
+    const user = supabase.auth.user();
+
+    if (!user) {
+      appReady.value = true;
+    }
+
+    supabase.auth.onAuthStateChange((_, session) => {
+      store.methods.setUser(session);
+      appReady.value = true;
+    });
+
+    return { appReady };
+
   },
 
   created() {
@@ -28,17 +46,6 @@ export default {
     });
   }
 },
-
-  setup() {
-    store.user = supabase.auth.user()
-    supabase.auth.onAuthStateChange((_, session) => {
-      store.user = session.user
-    })
-
-    return {
-      store,
-    }
-  },
 }
 
 // Check that service workers are supported
@@ -57,3 +64,5 @@ function isSuccessful(response) {
 }
 
 </script>
+
+<style >@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");</style>
