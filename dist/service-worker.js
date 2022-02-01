@@ -29,7 +29,7 @@ self.addEventListener('fetch', function (event) {
             return response;
           }
 
-          caches.open(CACHE_NAME)
+          caches.open('my-cache-v1')
             .then(function (cache) {
               cache.put(event.request, response.clone());
             });
