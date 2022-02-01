@@ -127,7 +127,7 @@ export default {
                 activity.value.push({
                     id: uid(),
                     description: "",
-                    time: "",
+                    duration: "",
 
                 });
                 return
