@@ -1,41 +1,34 @@
 <template>
-  <form class="form-widget" @submit.prevent="updateProfile">
-    <Avatar v-model:path="avatar_url" @upload="updateProfile" />
-    <div>
-      <label for="email">Email</label>
-      <input id="email" type="text" :value="store.user.email" disabled />
-    </div>
-    <div>
-      <label for="username">Name</label>
-      <input id="username" type="text" v-model="username" />
-    </div>
-    <div>
-      <label for="website">Website</label>
-      <input id="website" type="website" v-model="website" />
-    </div>
+    <div class="max-w-screen-sm mx-auto px-4 py-10">
+        <!-- Profile Form -->
+        <form @submit.prevent="updateProfile" class="p-8 flex flex-col bg-light-grey rounded-md shadow-lg">
+            <Avatar v-model:path="avatar_url" @upload="updateProfile"/>
+            <div class="flex flex-col mb-2">
+                <label for="email" class="mb-1 text-sm text-primaryc">Email</label>
+                <input id="email" type="text" :value="store.user.email" disabled required class="p-2 text-gray-500 focus:outline-none">
+            </div>
 
-    <div>
-      <input
-        type="submit"
-        class="button block primary"
-        :value="loading ? 'Loading ...' : 'Update'"
-        :disabled="loading"
-      />
-    </div>
+            <div class="flex flex-col mb-2">
+                <label for="username" class="mb-1 text-sm text-primaryc">Username</label>
+                <input id="username" type="text" v-model="username" class="p-2 text-gray-500 focus:outline-none">
+            </div>
 
-    <div>
-      <button class="button block" @click="signOut" :disabled="loading">
-        Sign Out
-      </button>
-    </div>
-  </form>
+            <div class="flex flex-col mb-2">
+                <label for="gender" class="mb-1 text-sm text-primaryc">Gender</label>
+                <input id="gender" type="text" v-model="gender" class="p-2 text-gray-500 focus:outline-none">
+            </div>
+            
+            <button type="submit" :value="loading ? 'Loading ...' : 'Update'" :disabled="loading" class="mt-6 py-2 px-6 rounded-sm self-start text-sm text-white bg-primaryc duration-200 border-solid border-2 boder-transperent hover:border-primaryc hover:bg-white hover:text-primaryc">Update</button>
+
+        </form>
+    </div>    
 </template>
 
 <script>
 import { supabase } from "../supabase"
 import { store } from "../store"
 import { onMounted, ref } from "vue"
-import Avatar from "./Avatar.vue"
+import Avatar from "../components/Avatar.vue"
 
 export default {
   components: {
@@ -44,7 +37,7 @@ export default {
   setup() {
     const loading = ref(true)
     const username = ref("")
-    const website = ref("")
+    const gender = ref("")
     const avatar_url = ref("")
 
     async function getProfile() {
@@ -54,7 +47,7 @@ export default {
 
         let { data, error, status } = await supabase
           .from("profiles")
-          .select(`username, website, avatar_url`)
+          .select(`username, gender, avatar_url`)
           .eq("id", store.user.id)
           .single()
 
@@ -62,7 +55,7 @@ export default {
 
         if (data) {
           username.value = data.username
-          website.value = data.website
+          gender.value = data.gender
           avatar_url.value = data.avatar_url
         }
       } catch (error) {
@@ -80,7 +73,7 @@ export default {
         const updates = {
           id: store.user.id,
           username: username.value,
-          website: website.value,
+          gender: gender.value,
           avatar_url: avatar_url.value,
           updated_at: new Date(),
         }
@@ -117,12 +110,15 @@ export default {
       store,
       loading,
       username,
-      website,
+      gender,
       avatar_url,
 
       updateProfile,
-      signOut,
     }
   },
 }
 </script>
+
+<style>
+
+</style>

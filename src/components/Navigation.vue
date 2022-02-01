@@ -2,13 +2,14 @@
   <header class="bg-primaryc text-white">
     <nav class="container py-5 px-4 flex flex-col gap-4 items-center sm:flex-row">
       <div class="flex items-center gap-x-4">
-        <img class="w-10" src="../assets/logo.png" alt="" />
-        <h1 class="text-lg">Active Tracker</h1>
+        <img class="h-10" src="../assets/logo.png" alt="" />
       </div>
       <ul class="flex flex-1 justify-end gap-x-10">
         <router-link class="cursor-pointer" :to="{ name: 'Home' }">Home</router-link>
+        <router-link v-if="user" class="cursor-pointer" :to="{ name: 'Activity' }">Create an Activity</router-link>
         <router-link v-if="!user" class="cursor-pointer" :to="{ name: 'Login' }">Login</router-link>
         <router-link v-if="!user" class="cursor-pointer" :to="{ name: 'Register' }">Register</router-link>
+        <router-link v-if="user" class="cursor-pointer" :to="{ name: 'Profile' }">Profile</router-link>
         <li v-if="user" @click="logout" class="cursor-pointer">Logout</li>
       </ul>
     </nav>

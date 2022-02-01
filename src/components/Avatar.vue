@@ -1,6 +1,6 @@
 <template>
   <div>
-      <div class="">
+      <div class="flex flex-col items-center">
         <img
           v-if="src"
           :src="src"
@@ -13,9 +13,9 @@
           class="avatar no-image"
           :style="{ height: size, width: size }"
         />
-      <div :style="{ width: size }">
-      <label class="button primary block" for="single">
-        {{ uploading ? "Uploading ..." : "Upload" }}
+      <div class="text-center py-10">
+      <label class="mt-6 py-2 px-6 rounded-sm self-start text-sm text-white bg-primaryc duration-200 border-solid border-2 boder-transperent hover:border-primaryc hover:bg-white hover:text-primaryc" for="single">
+        {{ uploading ? "Uploading ..." : "Upload new Picture" }}
       </label>
           <input
             style="visibility: hidden; position: absolute"
@@ -101,3 +101,22 @@ export default {
   },
 }
 </script>
+
+<style>
+
+.avatar {
+  border-radius: var(--custom-border-radius);
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.avatar.image {
+  object-fit: cover;
+}
+
+.avatar.no-image {
+  background-color: #333;
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 5px;
+}
+</style>
