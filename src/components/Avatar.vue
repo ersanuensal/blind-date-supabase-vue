@@ -1,31 +1,32 @@
 <template>
   <div>
-    <img
-      v-if="src"
-      :src="src"
-      alt="Avatar"
-      class="avatar image"
-      :style="{ height: size, width: size }"
-    />
-    <div
-      v-else
-      class="avatar no-image"
-      :style="{ height: size, width: size }"
-    />
-
-    <div :style="{ width: size }">
+      <div class="center">
+        <img
+          v-if="src"
+          :src="src"
+          alt="Avatar"
+          class="avatar image"
+          :style="{ height: size, width: size}"
+        />
+        <div
+          v-else
+          class="avatar no-image"
+          :style="{ height: size, width: size }"
+        />
+      <div :style="{ width: size }">
       <label class="button primary block" for="single">
         {{ uploading ? "Uploading ..." : "Upload" }}
       </label>
-      <input
-        style="visibility: hidden; position: absolute"
-        type="file"
-        id="single"
-        accept="image/*"
-        @change="uploadAvatar"
-        :disabled="uploading"
-      />
-    </div>
+          <input
+            style="visibility: hidden; position: absolute"
+            type="file"
+            id="single"
+            accept="image/*"
+            @change="uploadAvatar"
+            :disabled="uploading"
+          />
+        </div>
+      </div>
   </div>
 </template>
 
