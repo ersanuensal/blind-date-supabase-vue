@@ -13,30 +13,19 @@
         <div v-if="dataLoaded">
             <!-- General Info about Activity -->
             <div class="flex flex-col items-center p-8 rounded-md shadow-md bg-light-grey relative">
-                            <!-- Information -->
-            <p class="mt-2 py-1 px-3 text-xs text-white bg-primaryc shadow-md rounded-lg">
-                {{ data.date }} - {{ data.type }}
-            </p>
-            <h1 class="mt-2 text-center text-xl text-primaryc">
-                {{ data.name }}
-            </h1>
-            <p class="mt-2 text-center text-xl text-primaryc">
-                In {{ data.location }} at {{ data.time }}
-            </p>
-            <p v-if="data.type == 'others'" class="mt-2 text-center text-xl text-primaryc">
-                Doing {{ data.activity[0].description }} for {{ data.activity[0].duration }}
-            </p>
-            <p v-if="membersLoaded" class="mt-2 text-center text-xl text-primaryc">
-                people participating:
-            </p>
-            <router-link
-            :to="{ name: 'ViewProfile', params: { username: item } }"
-            v-for="(item, index) in members" :key="index">
-            <p 
-            class="mt-2 text-center text-xl text-primaryc cursor-pointer" >
-                {{ item }}
-            </p>
-            </router-link>
+                <!-- Information -->
+                <p class="mt-2 py-1 px-3 text-xs text-white bg-primaryc shadow-md rounded-lg">
+                    {{ data.date }} - {{ data.type }}
+                </p>
+                <h1 class="mt-2 text-center text-xl text-primaryc">
+                    {{ data.name }}
+                </h1>
+                <p class="mt-2 text-center text-xl text-primaryc">
+                    In {{ data.location }} at {{ data.time }}
+                </p>
+                <p v-if="data.type == 'others'" class="mt-2 text-center text-xl text-primaryc">
+                    Doing {{ data.activity[0].description }} for {{ data.activity[0].duration }}
+                </p>
 
                 <div v-if="members != null && members.includes(username)" class="flex self-center gap-x-2">
                     <div class="mt-2 py-2 px-6 rounded-sm self-start cursor-pointer text-sm text-white bg-primaryc duration-200 border-solid border-2 boder-transperent hover:border-primaryc hover:bg-white hover:text-primaryc" 
@@ -50,6 +39,21 @@
                         Join this Activity
                     </div>
                 </div>
+            </div>
+            <!-- Members -->
+            <div class="flex flex-col mt-6 items-center p-8 rounded-md shadow-md bg-light-grey relative">
+                <p v-if="membersLoaded" class="mt-2 py-1 px-3 text-xl text-white bg-primaryc shadow-md rounded-lg">
+                    people participating:
+                </p>
+                <router-link
+                :to="{ name: 'ViewProfile', params: { username: item } }"
+                v-for="(item, index) in members" :key="index">
+                <p 
+                class="mt-2 text-center text-xl text-primaryc cursor-pointer" >
+                    {{ item }}
+                </p>
+                </router-link>
+
             </div>
         </div>
     </div>

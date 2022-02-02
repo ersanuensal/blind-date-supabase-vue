@@ -15,7 +15,7 @@
             :key="index"
             >
             <!-- Information -->
-            <p class="mt-2 py-1 px-3 text-xs text-white bg-primaryc shadow-md rounded-lg">
+            <p class="mt-2 py-1 px-3 text-xs text-primaryc bg-white shadow-md rounded-lg">
                 {{ activity.date }}
             </p>
             <h1 class="mt-2 text-center text-xl text-white">
