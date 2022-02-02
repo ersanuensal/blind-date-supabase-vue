@@ -1,5 +1,5 @@
 <template>
-    <div class="max-w-screen-md mx-auto px-4 py-1">
+    <div class="max-w-screen-md mx-auto px-4 py-10">
         <!-- Status Message -->
         <div v-if="statusMsg || errorMsg" class="mb-10 p-4 bg-light-grey rounded-md">
             <p class="text-black-500">
@@ -105,9 +105,10 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref} from 'vue';
 import {uid} from "uid";
 import { supabase } from '../supabase/init';
+
 export default {
     setup() {
         const ActivityName = ref('');
@@ -126,8 +127,7 @@ export default {
             if (ActivityType.value === 'others') {
                 activity.value.push({
                     id: uid(),
-                    description: "",
-                    duration: "",
+                    description: ""
 
                 });
                 return
@@ -153,7 +153,7 @@ export default {
         }
 
         // Create Activity
-        const createActivity = async () => {
+        const createActivity = async (joinSelf) => {
             try {
                 const {error} = await supabase.from('activities').insert({
                     name: ActivityName.value,
@@ -192,7 +192,8 @@ export default {
             addActivity,
             removeActivity,
             activityChange,
-            createActivity
+            createActivity,
+
         }
 
 }

@@ -38,30 +38,30 @@ export default {
     return { appReady };
 
   },
+};
+//   created() {
+//   if (this.$workbox) {
+//     this.$workbox.addEventListener("waiting", () => {
+//       this.showUpdateUI = true;
+//     });
+//   }
+// },
+// }
 
-  created() {
-  if (this.$workbox) {
-    this.$workbox.addEventListener("waiting", () => {
-      this.showUpdateUI = true;
-    });
-  }
-},
-}
-
-// Check that service workers are supported
-if ('serviceWorker' in navigator) {
-  // Use the window load event to keep the page load performant
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js');
-  });
-}
+// // Check that service workers are supported
+// if ('serviceWorker' in navigator) {
+//   // Use the window load event to keep the page load performant
+//   window.addEventListener('load', () => {
+//     navigator.serviceWorker.register('service-worker.js');
+//   });
+// }
 
 
-function isSuccessful(response) {
-  return response &&
-    response.status === 200 &&
-    response.type === 'basic';
-}
+// function isSuccessful(response) {
+//   return response &&
+//     response.status === 200 &&
+//     response.type === 'basic';
+// }
 
 </script>
 
