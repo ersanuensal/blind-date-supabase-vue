@@ -12,7 +12,7 @@ import Profile from "../views/Profile.vue";
 import Activity from "../views/Activity.vue";
 import ViewActivity from "../views/ViewActivity.vue";
 import ViewProfile from "../views/ViewProfile.vue";
-
+import Explore from "../views/Explore.vue";
 
 const routes = [{
         path: '/',
@@ -24,6 +24,15 @@ const routes = [{
         }
     },
     {
+        path: '/explore',
+        name: 'Explore',
+        component: Explore,
+        meta: {
+            title: 'Explore',
+            auth: true
+        }
+    },
+    {
         path: '/login',
         name: 'Login',
         component: Login,
@@ -31,7 +40,8 @@ const routes = [{
             title: 'Login',
             auth: false
         }
-    }, {
+    },
+    {
         path: '/register',
         name: 'Register',
         component: Register,

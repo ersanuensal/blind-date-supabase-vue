@@ -5,7 +5,8 @@
         <img class="h-10" src="../assets/logo.png" alt="" />
       </div>
       <ul class="flex flex-1 justify-end gap-x-10">
-        <router-link class="cursor-pointer" :to="{ name: 'Home' }">Home</router-link>
+        <router-link class="cursor-pointer" :to="{ name: 'Explore' }">Explore</router-link>
+        <router-link class="cursor-pointer" :to="{ name: 'Home' }">Activities</router-link>
         <router-link v-if="user" class="cursor-pointer" :to="{ name: 'Activity' }">Create an Activity</router-link>
         <router-link v-if="!user" class="cursor-pointer" :to="{ name: 'Login' }">Login</router-link>
         <router-link v-if="!user" class="cursor-pointer" :to="{ name: 'Register' }">Register</router-link>
