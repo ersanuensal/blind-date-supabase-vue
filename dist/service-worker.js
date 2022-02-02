@@ -1,12 +1,12 @@
 console.log('Hello from service-worker.js');
-if (workbox) {
-  console.log(`Workbox is loaded`);
+// if (workbox) {
+//   console.log(`Workbox is loaded`);
 
-  workbox.precaching.precacheAndRoute(self.__precacheManifest);
+//   workbox.precaching.precacheAndRoute(self.__precacheManifest);
 
-} else {
-  console.log(`Workbox didn't load`);
-}
+// } else {
+//   console.log(`Workbox didn't load`);
+// }
 
 self.addEventListener('install', function (event) {
   event.waitUntil(
