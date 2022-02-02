@@ -7,7 +7,7 @@
             <h1 class="text-primaryc text-xl">Profile of {{username}}</h1>
             <Avatar v-model:path="avatar_url"/>
             <p class="text-primaryc">Gender: {{gender}}</p>
-            <p class="text-primaryc">Location:</p>
+            <p class="text-primaryc">Interests: {{interests}}</p>
         </div>
         
     </div>
@@ -32,6 +32,7 @@ export default {
         const username = ref("")
         const gender = ref("")
         const avatar_url = ref("")
+        const interests = ref("")
 
         const currentId = route.params.username;
 
@@ -45,7 +46,7 @@ export default {
 
             let { data, error, status } = await supabase
             .from("profiles")
-            .select(`username, gender, avatar_url`)
+            .select(`username, gender, avatar_url, interests`)
             .eq("username", currentId)
             .single()
 
@@ -56,6 +57,7 @@ export default {
             gender.value = data.gender
             avatar_url.value = data.avatar_url
             dataLoaded.value = true;
+            interests.value = data.interests
             console.log(avatar_url.value)
             }
         } catch (error) {
@@ -67,7 +69,7 @@ export default {
 
         getProfile();
 
-        return {dataLoaded, loading, username, gender, avatar_url};
+        return {dataLoaded, loading, username, gender, avatar_url, interests};
     }
 }
 </script>
