@@ -38,15 +38,15 @@ export default {
     return { appReady };
 
   },
-};
+
   created() {
   if (this.$workbox) {
     this.$workbox.addEventListener("waiting", () => {
       this.showUpdateUI = true;
     });
   }
-},
-}
+  }};
+
 
 // Check that service workers are supported
 if ('serviceWorker' in navigator) {
@@ -63,6 +63,5 @@ function isSuccessful(response) {
     response.type === 'basic';
 }
 
-</script>
 
-<style >@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");</style>
+</script>
