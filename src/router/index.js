@@ -13,6 +13,7 @@ import Activity from "../views/Activity.vue";
 import ViewActivity from "../views/ViewActivity.vue";
 import ViewProfile from "../views/ViewProfile.vue";
 import Explore from "../views/Explore.vue";
+import Chat from "../views/Chat.vue";
 
 const routes = [{
         path: '/',
@@ -83,6 +84,15 @@ const routes = [{
         component: ViewProfile,
         meta: {
             title: 'View Profile',
+            auth: true
+
+        }
+    }, {
+        path: '/chat',
+        name: 'Chat',
+        component: Chat,
+        meta: {
+            title: 'Chat',
             auth: true
 
         }

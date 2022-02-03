@@ -24,9 +24,6 @@
             <p class="mt-2 text-center text-xs text-white">
                 In {{ activity.location }} at {{ activity.time }}
             </p>
-            <p class="mt-2 text-center text-xs text-white">
-                {{ activity.members.length}} people participating
-            </p>
             </router-link>
         </div>
     </div>

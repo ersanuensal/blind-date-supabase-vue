@@ -20,7 +20,7 @@
             
             <button type="submit" class="mt-6 py-2 px-6 rounded-sm self-start text-sm text-white bg-primaryc duration-200 border-solid border-2 boder-transperent hover:border-primaryc hover:bg-white hover:text-primaryc">
                 Login
-                </button>
+            </button>
         
             <router-link class="text-sm text-black mt-6 text-center" :to="{name: 'Register'}">
                 You don't have an account? <span class="text-primaryc">Register</span>
@@ -52,7 +52,7 @@ export default {
                     password: password.value,
                 });
                 if (error) throw error;
-                router.push({ name: "Home" });
+                router.push({ name: "Profile" });
             } catch (error) {
                 errorMsg.value = error.message;
                 setTimeout(() => {
