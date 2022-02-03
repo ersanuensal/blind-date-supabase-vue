@@ -115,7 +115,7 @@ export default {
 }
 
 .avatar.no-image {
-  background-color: #333;
+  background-image: url(https://avatars.dicebear.com/api/personas/ghfretfcs.svg);
   border: 1px solid rgb(200, 200, 200);
   border-radius: 5px;
 }

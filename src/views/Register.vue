@@ -57,7 +57,7 @@ export default {
                 password: password.value,
             });
             if (error) throw error;
-            router.push({ name: "Login" });
+            router.push({ name: "Profile" });
             } catch (error) {
             errorMsg.value = error.message;
             setTimeout(() => {

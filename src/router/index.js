@@ -92,7 +92,7 @@ const routes = [{
         name: 'Chat',
         component: Chat,
         meta: {
-            title: 'Chat',
+            title: 'Dashboard',
             auth: true
 
         }

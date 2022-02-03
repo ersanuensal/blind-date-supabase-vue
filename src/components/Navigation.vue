@@ -10,7 +10,7 @@
         <router-link v-if="user" class="cursor-pointer" :to="{ name: 'Activity' }">Create an Activity</router-link>
         <router-link v-if="!user" class="cursor-pointer" :to="{ name: 'Login' }">Login</router-link>
         <router-link v-if="!user" class="cursor-pointer" :to="{ name: 'Register' }">Register</router-link>
-        <router-link v-if="user" class="cursor-pointer" :to="{ name: 'Chat' }">Chat</router-link>
+        <router-link v-if="user" class="cursor-pointer" :to="{ name: 'Chat' }">Dashboard</router-link>
         <router-link v-if="user" class="cursor-pointer" :to="{ name: 'Profile' }">Profile</router-link>
         <li v-if="user" @click="logout" class="cursor-pointer">Logout</li>
       </ul>

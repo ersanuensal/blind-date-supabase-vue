@@ -35,7 +35,7 @@
                 </div>
                 <div v-else class="flex self-center gap-x-2">
                     <div class="mt-2 py-2 px-6 rounded-sm self-start cursor-pointer text-sm text-white bg-primaryc duration-200 border-solid border-2 boder-transperent hover:border-primaryc hover:bg-white hover:text-primaryc" 
-                    @click="joinActivity(username)">
+                    @click="joinActivity()">
                         Join this Activity
                     </div>
                 </div>
@@ -46,11 +46,11 @@
                     people participating:
                 </p>
                 <router-link
-                :to="{ name: 'ViewProfile', params: { username: item } }"
+                :to="{ name: 'ViewProfile', params: { username: item.username } }"
                 v-for="(item, index) in members" :key="index">
                 <p 
                 class="mt-2 text-center text-xl text-primaryc cursor-pointer" >
-                    {{ item }}
+                    {{ item.username }}
                 </p>
                 </router-link>
 
@@ -63,7 +63,8 @@
 import { ref, computed } from 'vue';
 import { supabase } from '../supabase/init';
 import { useRoute } from 'vue-router';
-import store from '../store/index';
+import {store} from '../store';
+import router from '../router';
 
 export default {
     name: "view-activity",
@@ -74,18 +75,20 @@ export default {
         const dataLoaded = ref(null);
         const errorMsg = ref(null);
         const statusMsg = ref(null);
-        const route = useRoute();
-        const user = computed(() => store.state.user);
+        const router = useRoute();
         const members = ref(null);
         const membersLoaded = ref(null);
         const username = ref(null);
         
 
+        store.user = supabase.auth.user()
+
+
 
         let localUsername;
 
         // Get curren Id of route
-        const currentId = route.params.id;
+        const currentId = router.params.id;
         // Get activity data
         const getData = async () => {
             try {
@@ -104,29 +107,16 @@ export default {
         getData();
 
 
-        // Get username of user id
-        const getUsername = async () => {
-            try {
-                const {data: users, error} = await supabase.from('profiles').select('username').eq('id', user.value.id);
-                if (error) throw error;
-                username.value = users[0].username;
-                localUsername = users[0].username;
-            } catch (error) {
-                errorMsg.calue = error.message;
-                setTimeout(() => {
-                    errorMsg.value = null;
-                }, 5000);
-            }
-        }
-        getUsername(user.value.id);
- 
 
         // Get Partlist
         const checkParticipation = async () => {
             const partlist = [];
             let membersInList = [];
             try {
-                const {data: users, error} = await supabase.from('instanceOfActivities').select('user').eq('activity_id', currentId);
+                const {data: users, error} = await supabase
+                .from('instanceOfActivities')
+                .select(`user ( username )`)
+                .eq('activity_id', currentId);
                 partlist.value = users;
             } catch (error) {
                 errorMsg.value = error.message;
@@ -146,11 +136,11 @@ export default {
 
 
         // Join Activity
-        const joinActivity = async (userJoin) => {
+        const joinActivity = async () => {
             try {
                 const {data: activity, error} = await supabase.from('instanceOfActivities').insert({
                     activity_id: currentId,
-                    user: userJoin,
+                    user: store.user.id,
                 });
                 if (error) throw error;
                 statusMsg.value = 'You joined this activity';
@@ -164,7 +154,7 @@ export default {
                 }, 5000);
             }
             // Refresh page
-            window.location.reload();
+            router.go();
         }
 
         // Leave Activity
@@ -175,7 +165,6 @@ export default {
             errorMsg,
             statusMsg,
             getData,
-            user,
             joinActivity,
             checkParticipation,
             members,
